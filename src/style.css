@@ -1,0 +1,164 @@
+/* ------------------------------------------
+   ESTILOS GENERALES
+------------------------------------------ */
+body {
+    margin: 0;
+    font-family: "Segoe UI", Roboto, sans-serif;
+    background: #f2f4f8;
+    color: #222;
+    display: flex;
+    justify-content: center;
+    padding: 40px;
+}
+
+/* Contenedor principal */
+.container {
+    background: #fff;
+    width: 900px;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+}
+
+/* ------------------------------------------
+   TÍTULOS
+------------------------------------------ */
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-weight: 600;
+    color: #333;
+}
+
+
+/* ------------------------------------------
+   FORMULARIO
+------------------------------------------ */
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 6px;
+    font-weight: 500;
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #cbd0d6;
+    border-radius: 8px;
+    outline: none;
+    font-size: 15px;
+    transition: 0.2s;
+}
+
+input:focus, select:focus {
+    border-color: #4c7dff;
+    box-shadow: 0 0 4px rgba(76, 125, 255, 0.4);
+}
+
+/* Botón principal (Agregar / Actualizar) */
+#btnAgregar {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: none;
+    border-radius: 8px;
+    background: #4c7dff;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+#btnAgregar:hover {
+    background: #3b67e6;
+}
+
+
+/* ------------------------------------------
+   BUSCADOR
+------------------------------------------ */
+#buscador {
+    margin-bottom: 20px;
+    padding: 10px;
+    width: 250px;
+    border-radius: 8px;
+    border: 1px solid #cbd0d6;
+    outline: none;
+    transition: 0.2s;
+}
+
+#buscador:focus {
+    border-color: #4c7dff;
+    box-shadow: 0 0 4px rgba(76, 125, 255, 0.4);
+}
+
+
+/* ------------------------------------------
+   TABLA
+------------------------------------------ */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+thead {
+    background: #4c7dff;
+    color: white;
+}
+
+th, td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #e3e6eb;
+    font-size: 15px;
+}
+
+/* Hover en filas */
+tbody tr:hover {
+    background: #eef3ff;
+    cursor: pointer;
+}
+
+/* Fila en edición */
+.editing {
+    background-color: #ffefc2 !important;
+    transition: 0.3s;
+}
+
+
+/* ------------------------------------------
+   BOTÓN ELIMINAR
+------------------------------------------ */
+.btn-eliminar {
+    padding: 6px 10px;
+    background: #ff4a4a;
+    border: none;
+    border-radius: 6px;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.btn-eliminar:hover {
+    background: #e03c3c;
+}
+
+/* ------------------------------------------
+   RESPONSIVE
+------------------------------------------ */
+@media (max-width: 700px) {
+    .container {
+        width: 90%;
+    }
+
+    table, thead, tbody, tr, th, td {
+        font-size: 13px;
+    }
+}
