@@ -1,0 +1,482 @@
+/* --------------------------------------------------- */
+/* 1. CONFIGURACIÓN GLOBAL Y VARIABLES CSS */
+/* --------------------------------------------------- */
+
+/* Importar fuente moderna y limpia de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
+/* Reset básico para mejor manejo del box-model */
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* Variables de Color (Paleta Turquesa/Oscura) */
+:root {
+    /* --- Variables --- */
+    --primary-color: #00bcd4; /* Turquesa vibrante */
+    --secondary-color: #2c2c2c; /* Gris oscuro para cards */
+    --tertiary-color: #444444; /* Gris más claro para fondos de sección */
+    --text-color: #e0e0e0; /* Blanco suave */
+    --bg-color: #121212; /* Fondo muy oscuro */
+    --hover-color: #00e5ff; /* Turquesa más brillante */
+    --shadow-color: rgba(0, 188, 212, 0.4); /* Sombra turquesa suave */
+    --delete-color: #ff4d4d; /* Rojo para el botón de eliminar */ 
+
+    /* --- Propiedades Generales --- */
+    /* 🚨 Cambio 1: Fuente Poppins para un toque moderno y limpio */
+    font-family: 'Poppins', sans-serif;
+    line-height: 1.6;
+    font-weight: 400;
+    color: var(--text-color);
+
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+} 
+
+body {
+    margin: 0; 
+    display: flex; 
+    justify-content: center;
+    align-items: flex-start; 
+    min-width: 320px; 
+    min-height: 100vh; 
+    padding: 20px 0; 
+    /* 🚨 Cambio 2: Gradiente radial sutil para un fondo con profundidad */
+    background-color: var(--bg-color);
+    background-image: radial-gradient(circle at top left, rgba(0, 188, 212, 0.05) 0%, transparent 40%),
+                      radial-gradient(circle at bottom right, rgba(200, 200, 200, 0.03) 0%, transparent 50%);
+} 
+
+a {
+    font-weight: 600; /* Más peso para los enlaces */
+    color: var(--primary-color);
+    text-decoration: none;
+    transition: color 0.3s ease;
+} 
+
+a:hover {
+    color: var(--hover-color);
+    text-decoration: underline;
+} 
+
+/* Contenedor Principal */
+#app {
+    width: 100%; 
+    max-width: 1400px; 
+    margin: 0 auto; 
+    padding: 1.5rem; 
+    text-align: center; 
+    background-color: #1e1e1e;
+    border-radius: 20px; /* Bordes un poco más suaves */
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.7); /* Sombra más intensa */
+    animation: fadeIn 0.8s ease-out;
+} 
+
+@keyframes fadeIn {
+    from { 
+        opacity: 0; 
+        transform: translateY(20px);
+    }
+    to { 
+        opacity: 1; 
+        transform: translateY(0);
+    }
+} 
+
+/* --------------------------------------------------- */
+/* 2. ENCABEZADO Y PIE DE PÁGINA */
+/* --------------------------------------------------- */
+
+.app-header {
+    margin-bottom: 3rem;
+    padding: 2rem; /* Más padding */
+    background-color: var(--tertiary-color);
+    border-bottom: 5px solid var(--primary-color); /* Borde más grueso */
+    border-radius: 15px;
+    box-shadow: 0 8px 25px var(--shadow-color);
+    position: relative;
+    overflow: hidden;
+}
+
+.app-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.1), transparent);
+    transition: all 0.5s ease;
+    /* 🚨 Cambio 3: Animación de brillo más rápida y notoria */
+    animation: headerGlow 4s infinite linear; 
+    opacity: 0.3;
+}
+
+@keyframes headerGlow {
+    0% { left: -100%; }
+    100% { left: 100%; }
+}
+
+.app-header h1 {
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+    font-size: 2.8rem; /* Fuente más grande */
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-shadow: 0 0 10px rgba(0, 188, 212, 0.5); /* Sombra de texto azul */
+}
+
+.logo-icon {
+    font-size: 3.5rem; /* Aún más grande */
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--primary-color);
+    transition: transform 0.5s ease;
+}
+
+.app-header:hover .logo-icon {
+    transform: rotate(360deg); /* Rotación completa al pasar el ratón */
+}
+
+
+/* Divisor visual */
+.divider {
+    border: 0;
+    height: 4px; /* Aún más grueso */
+    background-image: linear-gradient(to right, rgba(0, 0, 0, 0), var(--hover-color), rgba(0, 0, 0, 0));
+    margin: 5rem 0;
+    opacity: 0.8;
+}
+
+/* Pie de página */
+.app-footer {
+    margin-top: 5rem;
+    padding: 1.5rem 0;
+    border-top: 1px dashed var(--tertiary-color); /* Borde con estilo de guiones */
+    font-size: 0.9rem;
+    color: #888;
+    text-align: center;
+}
+
+/* --------------------------------------------------- */
+/* 3. ESTRUCTURA PRINCIPAL (MAIN) */
+/* --------------------------------------------------- */
+
+.app-main {
+    display: grid;
+    gap: 40px;
+    grid-template-columns: 1fr; 
+    text-align: left;
+}
+
+/* Secciones de Contenido (generalizado) */
+.content-section {
+    padding: 30px;
+    background-color: var(--secondary-color); 
+    border-radius: 12px;
+    border-top: 4px solid var(--primary-color); /* Borde superior más grueso */
+    box-shadow: 0 3px 15px rgba(0,0,0,0.3);
+    /* 🚨 Cambio 4: Transición para el efecto de "levantar" */
+    transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94), box-shadow 0.3s ease; 
+    position: relative;
+}
+
+/* Efecto hover: Resplandor azul y levantamiento */
+.content-section:hover {
+    transform: translateY(-8px); /* Más levantamiento */
+    box-shadow: 0 15px 40px var(--shadow-color); /* Sombra de resplandor más intensa */
+}
+
+.section-title {
+    color: var(--primary-color);
+    font-size: 2rem;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.icon {
+    margin-right: 0.5rem;
+    font-size: 1.6rem; /* Iconos más grandes */
+}
+
+/* --------------------------------------------------- */
+/* 4. ESTILOS DE BOTONES */
+/* --------------------------------------------------- */
+
+button {
+    border-radius: 10px; /* Bordes más redondeados */
+    border: 1px solid transparent; 
+    padding: 12px 25px;
+    font-size: 1.0rem;
+    font-weight: 600;
+    color: var(--bg-color);
+    cursor: pointer;
+    /* 🚨 Cambio 5: Transición a un color de fondo más brillante */
+    transition: all 0.3s ease-in-out;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.5);
+    background-image: linear-gradient(135deg, var(--primary-color) 0%, #00a4ba 100%); /* Gradiente sutil */
+}
+
+.primary-button:hover {
+    /* 🚨 Cambio 6: Efecto de "empuje" y resplandor más fuerte */
+    background-image: linear-gradient(135deg, var(--hover-color) 0%, #00a4ba 100%);
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 8px 20px var(--shadow-color);
+}
+button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.4);
+}
+
+/* Botón de Eliminar (Estilo específico) */
+.library-table .delete-btn {
+    background-color: var(--delete-color);
+    background-image: none; /* Quitar el gradiente */
+    color: white;
+    padding: 8px 15px;
+    font-size: 0.9rem;
+    border-radius: 6px;
+    box-shadow: 0 2px 5px rgba(255, 77, 77, 0.5);
+    transition: all 0.2s ease;
+}
+
+.library-table .delete-btn:hover {
+    background-color: #ff0000;
+    transform: scale(1.05) rotate(-2deg); /* Pequeña rotación divertida */
+}
+
+/* --------------------------------------------------- */
+/* 5. ESTILOS DEL FORMULARIO Y ENTRADAS */
+/* --------------------------------------------------- */
+
+.book-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 100%; 
+    margin: 0 auto;
+    padding: 0; 
+    text-align: left;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.book-form label {
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--text-color);
+    letter-spacing: 0.5px;
+}
+
+.book-form input[type="text"], 
+.book-form input[type="number"],
+.book-form select {
+    padding: 14px; /* Más padding para inputs */
+    border: 1px solid #555;
+    border-radius: 8px;
+    background-color: #3a3a3a;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+.book-form input:focus, .book-form select:focus {
+    border-color: var(--hover-color);
+    outline: none;
+    box-shadow: 0 0 10px var(--shadow-color); /* Resplandor más fuerte al enfocar */
+    background-color: #414141; /* Oscurecer un poco el fondo al enfocar */
+}
+
+.book-form select {
+    /* Icono de flecha custom para el select en temas oscuros */
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20'%3E%3Cpath fill='%2300bcd4' d='M10 12l-6-6h12z'/%3E%3C/svg%3E"); /* Flecha turquesa */
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 15px;
+    padding-right: 30px; 
+}
+
+/* --------------------------------------------------- */
+/* 6. TABLA Y BÚSQUEDA */
+/* --------------------------------------------------- */
+
+.search-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    gap: 20px;
+    flex-wrap: wrap; 
+}
+
+.search-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.search-item input {
+    padding: 12px;
+    border: 1px solid #555;
+    border-radius: 8px;
+    background-color: #3a3a3a;
+    color: var(--text-color);
+    font-size: 1rem;
+    transition: border-color 0.3s ease;
+}
+
+.total-status {
+    font-weight: 700;
+    color: var(--hover-color); /* Color más brillante para el estado */
+    padding: 10px 15px;
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    font-size: 1rem;
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
+}
+.total-status span {
+    font-size: 1.5rem;
+    margin-left: 5px;
+}
+
+.table-responsive {
+    overflow-x: auto; 
+    border-radius: 12px; 
+}
+
+.library-table {
+    width: 100%;
+    min-width: 650px; 
+    border-collapse: collapse;
+    margin-top: 20px;
+    overflow: hidden; 
+}
+
+.library-table thead {
+    background-color: var(--primary-color);
+    color: var(--bg-color);
+    text-transform: uppercase;
+    font-weight: 700;
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+}
+
+.library-table th, .library-table td {
+    padding: 15px;
+    border: 1px solid #333;
+    text-align: left; 
+}
+
+.library-table th:first-child, .library-table td:first-child {
+    width: 60px; 
+    text-align: center;
+    font-weight: 700;
+}
+
+.library-table tbody tr {
+    background-color: var(--secondary-color);
+    transition: background-color 0.2s ease, box-shadow 0.3s ease, transform 0.2s ease; /* Transición a transform */
+}
+
+.library-table tbody tr:nth-child(even) {
+    background-color: #313131; 
+}
+
+/* Efecto Hover para las filas: resplandor y pequeño movimiento */
+.library-table tbody tr:hover {
+    background-color: #3e3e3e; /* Fondo un poco más claro para contraste */
+    box-shadow: 0 0 15px var(--shadow-color);
+    transform: scale(1.01); /* Pequeño zoom que da sensación de "clicable" */
+    cursor: pointer; 
+}
+
+.library-table .text-right {
+    text-align: center;
+    width: 120px;
+}
+
+.library-table .empty-message {
+    text-align: center;
+    padding: 20px;
+    color: #999;
+    font-style: italic;
+}
+
+
+/* --------------------------------------------------- */
+/* 7. MEDIA QUERIES (RESPONSIVE DESIGN) */
+/* --------------------------------------------------- */
+
+/* Escritorio (>= 768px) */
+@media (min-width: 768px) {
+    #app {
+        padding: 4rem;
+    }
+    .app-header h1 {
+        font-size: 3rem;
+    }
+    
+    .app-main {
+        grid-template-columns: 380px 1fr; /* Formulario un poco más ancho */
+    }
+
+    .form-section {
+        order: -1; 
+    }
+    
+    .book-form {
+        max-width: none; 
+    }
+}
+
+/* Móvil (<= 767px) */
+@media (max-width: 767px) {
+    #app {
+        padding: 1rem;
+        margin: 1rem auto;
+        border-radius: 10px;
+    }
+    
+    .app-header h1 {
+        font-size: 1.8rem;
+    }
+
+    .search-controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .search-item {
+        flex-direction: column;
+        align-items: flex-start;
+        width: 100%;
+    }
+    .search-item input {
+        width: 100%;
+        margin-top: 5px;
+    }
+
+    .total-status {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    
+    .library-table th, .library-table td {
+        padding: 10px;
+        font-size: 0.9rem;
+    }
+    
+    .library-table .delete-btn {
+        padding: 6px 10px;
+        font-size: 0.8rem;
+    }
+}
