@@ -1,164 +1,212 @@
-/* ------------------------------------------
-   ESTILOS GENERALES
------------------------------------------- */
+:root {
+  --negro: #0d0d0d;
+  --grafito: #181818;
+  --gris-borde: #232323;
+  --gris-texto: #ffffff;
+
+  --azul: #007bff;
+  --azul-hover: #249dff;
+
+  --verde: #00c853;
+  --verde-hover: #17e46b;
+
+  --rojo: #d62828;
+  --rojo-hover: #ff3e3e;
+
+  --blanco: #ffffff;
+
+  font-family: "Poppins", sans-serif;
+  color: var(--gris-texto);
+}
+
+/* FONDO GENERAL */
 body {
-    margin: 0;
-    font-family: "Segoe UI", Roboto, sans-serif;
-    background: #f2f4f8;
-    color: #222;
-    display: flex;
-    justify-content: center;
-    padding: 40px;
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  background: radial-gradient(circle at top, #111, #000);
 }
 
-/* Contenedor principal */
-.container {
-    background: #fff;
-    width: 900px;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+/* CONTENEDOR */
+#app {
+  width: 95%;
+  max-width: 950px;
 }
 
-/* ------------------------------------------
-   TÍTULOS
------------------------------------------- */
+/* TARJETAS */
+.card {
+  background: var(--grafito);
+  padding: 1.8rem;
+  border-radius: 14px;
+  border: 1px solid var(--gris-borde);
+  box-shadow: 0 0 25px rgba(0,0,0,0.6);
+  margin-bottom: 1.5rem;
+  animation: fadeIn .5s ease;
+}
+
+/* Animación */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* TITULOS */
+.card-title {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--blanco);
+  margin-bottom: 1rem;
+}
+
 h1 {
-    text-align: center;
-    margin-bottom: 20px;
-    font-weight: 600;
-    color: #333;
+  text-align: center;
+  font-size: 36px;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--blanco);
 }
 
-
-/* ------------------------------------------
-   FORMULARIO
------------------------------------------- */
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 6px;
-    font-weight: 500;
+/* FORMULARIO */
+.formulario {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1rem;
 }
 
 input, select {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #cbd0d6;
-    border-radius: 8px;
-    outline: none;
-    font-size: 15px;
-    transition: 0.2s;
+  background: #101010;
+  border: 1px solid var(--gris-borde);
+  padding: .85rem;
+  border-radius: 10px;
+  color: var(--gris-texto);
+  font-size: 15px;
+  transition: .2s;
+}
+
+input::placeholder {
+  color: #bdbdbd;
 }
 
 input:focus, select:focus {
-    border-color: #4c7dff;
-    box-shadow: 0 0 4px rgba(76, 125, 255, 0.4);
+  border-color: var(--blanco);
+  box-shadow: 0 0 12px rgba(255,255,255,.4);
+  outline: none;
+  transform: scale(1.02);
 }
 
-/* Botón principal (Agregar / Actualizar) */
-#btnAgregar {
-    width: 100%;
-    padding: 12px;
-    margin-top: 5px;
-    border: none;
-    border-radius: 8px;
-    background: #4c7dff;
-    color: #fff;
-    font-size: 16px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
+/* BOTONES GENERALES */
+button {
+  margin-top: .7rem;
+  padding: .85rem 1.2rem;
+  border-radius: 12px;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+  transition: .25s;
+  width: fit-content;
+  display: inline-flex;
+  align-items: center;
+  gap: .45rem;
 }
 
-#btnAgregar:hover {
-    background: #3b67e6;
+button:active {
+  transform: scale(.93);
 }
 
-
-/* ------------------------------------------
-   BUSCADOR
------------------------------------------- */
-#buscador {
-    margin-bottom: 20px;
-    padding: 10px;
-    width: 250px;
-    border-radius: 8px;
-    border: 1px solid #cbd0d6;
-    outline: none;
-    transition: 0.2s;
+/* PRINCIPALES */
+button#guardar,
+button#guardarCambios,
+button#verTodos {
+  background: var(--azul);
+  color: #fff;
+}
+button#guardar:hover,
+button#guardarCambios:hover,
+button#verTodos:hover {
+  background: var(--azul-hover);
+  transform: translateY(-3px) scale(1.05);
 }
 
-#buscador:focus {
-    border-color: #4c7dff;
-    box-shadow: 0 0 4px rgba(76, 125, 255, 0.4);
+/* TABLA */
+#resultado {
+  animation: fadeIn .4s ease;
 }
 
-
-/* ------------------------------------------
-   TABLA
------------------------------------------- */
 table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 10px;
+  width: 100%;
+  background: #111;
+  border-radius: 14px;
+  overflow: hidden;
+  border-collapse: collapse;
+  box-shadow: 0 0 18px rgba(0,0,0,0.55);
 }
 
-thead {
-    background: #4c7dff;
-    color: white;
+th {
+  background: #1b1b1b;
+  color: var(--blanco);
+  text-align: left;
+  padding: 1rem;
+  font-size: 15px;
+  border-bottom: 1px solid #252525;
 }
 
-th, td {
-    padding: 12px;
-    text-align: left;
-    border-bottom: 1px solid #e3e6eb;
-    font-size: 15px;
+td {
+  padding: .85rem;
+  border-bottom: 1px solid #1a1a1a;
 }
 
-/* Hover en filas */
+tbody tr:nth-child(even) {
+  background: #141414;
+}
+
 tbody tr:hover {
-    background: #eef3ff;
-    cursor: pointer;
+  background: rgba(0, 123, 255, 0.15);
+  transition: .2s;
 }
 
-/* Fila en edición */
-.editing {
-    background-color: #ffefc2 !important;
-    transition: 0.3s;
+/* ACCIONES */
+button.eliminar,
+button.editar {
+  padding: .55rem .8rem;
+  border-radius: 8px;
+  font-size: 15px;
 }
 
-
-/* ------------------------------------------
-   BOTÓN ELIMINAR
------------------------------------------- */
-.btn-eliminar {
-    padding: 6px 10px;
-    background: #ff4a4a;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    font-weight: 600;
-    cursor: pointer;
-    transition: 0.2s;
+button.eliminar i,
+button.editar i {
+  pointer-events: none;
 }
 
-.btn-eliminar:hover {
-    background: #e03c3c;
+/* Editar */
+button.editar {
+  background: #06d6a0;
+  color: #000;
+}
+button.editar:hover {
+  background: #2af5be;
 }
 
-/* ------------------------------------------
-   RESPONSIVE
------------------------------------------- */
-@media (max-width: 700px) {
-    .container {
-        width: 90%;
-    }
+/* Eliminar */
+button.eliminar {
+  background: #ef233c;
+  color: #fff;
+}
+button.eliminar:hover {
+  background: #ff4757;
+}
 
-    table, thead, tbody, tr, th, td {
-        font-size: 13px;
-    }
+/* Modo edición activo */
+.editando {
+  border-color: var(--azul);
+  box-shadow: 0 0 15px rgba(0, 123, 255, .4);
+}
+
+/* RESPONSIVE */
+@media(max-width:600px){
+  .formulario { grid-template-columns: 1fr; }
 }
