@@ -1,0 +1,118 @@
+/* ====== Estilo General ====== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #1e1e1e;
+  color: #e0e0e0;
+}
+
+#app {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 20px;
+  background-color: #252525;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0, 0, 0, 0.5);
+}
+
+/* ====== Títulos ====== */
+h2, h3 {
+  color: #ffffff;
+  text-align: center;
+}
+
+/* ====== Formularios ====== */
+.formulario {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fila {
+  display: flex;
+  gap: 12px;
+}
+
+.fila input,
+.fila select {
+  flex: 1;
+}
+
+input, select {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #444;
+  background-color: #2b2b2b;
+  color: #e0e0e0;
+}
+
+/* ====== Búsqueda centrada ====== */
+.buscar-contenedor {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+}
+
+.buscar-contenedor input {
+  width: 50%;
+}
+
+/* ====== Botones ====== */
+button {
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background-color: #3a3a3a;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  background-color: #505050;
+}
+
+button.eliminar {
+  background-color: #a83a3a;
+}
+
+button.eliminar:hover {
+  background-color: #c14c4c;
+}
+
+.centrado {
+  display: flex;
+  justify-content: center;
+  margin: 15px 0;
+}
+#verTodos {
+  display: block;
+  margin: 20px auto;
+}
+
+
+/* ====== Tabla ====== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  background-color: #2c2c2c;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #444;
+}
+
+th {
+  background-color: #353535;
+}
+
+tr:nth-child(even) {
+  background-color: #282828;
+}
+
+tr:hover {
+  background-color: #333333;
+}
